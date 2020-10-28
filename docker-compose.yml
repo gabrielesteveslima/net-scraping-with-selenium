@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  sibsampleapi:
+      image: sibsampleapi
+      container_name: "sib-sample-api"
+      build:
+        context: .
+        dockerfile: ./Dockerfile
+      ports:
+        - "8080:80"
+      networks:
+        - default
+      depends_on:
+        - "db"
+             
+  db:
+      image: postgres:9.6
+      container_name: "sib-sample-api-db"
+      environment:
+        - POSTGRES_DB=example
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - TZ=GMT
+      ports:
+        - 5432:5432
+        
+networks:
+    default:
+        driver: bridge
