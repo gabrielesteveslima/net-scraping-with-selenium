@@ -41,7 +41,6 @@
 
     <ItemGroup>
       <Folder Include="Database\Design" />
-      <Folder Include="Database\Design\Migrations" />
     </ItemGroup>
     
 </Project>
