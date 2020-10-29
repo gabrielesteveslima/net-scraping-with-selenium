@@ -25,6 +25,15 @@ services:
       ports:
         - 5432:5432
         
+  scraping-source-data:
+        image: scrapingsourcedata
+        build:
+            context: ./src/scraping/static-server/
+            dockerfile: Dockerfile
+        container_name: "scraping-source-data"
+        ports:
+          - 80:80
+        
 networks:
     default:
         driver: bridge
