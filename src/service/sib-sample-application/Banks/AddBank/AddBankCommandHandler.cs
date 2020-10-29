@@ -23,8 +23,9 @@
             try
             {
                 var contract = request.BankContract;
-                var bank = new UserBuilder()
+                var bank = new BankBuilder()
                     .WithCode(contract.Code)
+                    .WithIspb(contract.ISPB)
                     .WithName(contract.Name)
                     .WithDocument(contract.Document)
                     .Build();

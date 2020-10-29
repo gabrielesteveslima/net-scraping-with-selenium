@@ -39,7 +39,7 @@ namespace CipScrapingBot
                         Code = bankData[2].Text,
                         Document = bankData[3].Text,
                         ISPB = bankData[4].Text,
-                        Product = bankData[5].Text,
+                        Product = bankData[5].Text
                     })
                     .ToList();
             }

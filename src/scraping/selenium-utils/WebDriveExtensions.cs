@@ -18,6 +18,7 @@ namespace Selenium.Utils
             var webElement = webDriver.FindElement(by);
             return webElement.Text;
         }
+
         public static void Submit(this IWebDriver webDriver, By by)
         {
             var webElement = webDriver.FindElement(by);

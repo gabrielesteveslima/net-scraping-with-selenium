@@ -1,7 +1,5 @@
-﻿namespace SibSample.Domain.Users.Documents
+﻿namespace SibSample.Domain.Documents
 {
-    using System;
-    using Core.Domain;
     using Core.SeedWorks;
     using Rules;
 
@@ -12,8 +10,7 @@
         public Document(string value)
         {
             Value = value;
-
-            CheckRule(new DocDoesMatchCnpj(value));
+            CheckRule(new DocumentIsValid(value));
         }
     }
 }

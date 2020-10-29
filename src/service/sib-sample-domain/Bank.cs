@@ -1,4 +1,4 @@
-﻿namespace SibSample.Domain.Users
+﻿namespace SibSample.Domain
 {
     using System;
     using System.Collections.Generic;
@@ -7,19 +7,28 @@
 
     public sealed class Bank : Entity<BankId>, IAggregateRoot
     {
-        public Bank(int code, string name, Email email, Document document) : this()
+        public Bank(string code, string name, string ispb, string document) : this()
+        {
+            Code = code;
+            ISPB = ispb;
+            Name = name;
+
+            AddDocument(document);
+        }
+
+        private Bank()
         {
             Id = new BankId(Guid.NewGuid());
-            Code = code;
-            Name = name;
-            Email = email;
-            Document = document;
         }
 
         public string Name { get; private set; }
-        public int Code { get; private set; }
-        public int ISPB { get; private set; }
-        public Email Email { get; private set; }
+        public string Code { get; private set; }
+        public string ISPB { get; private set; }
         public Document Document { get; private set; }
+
+        public void AddDocument(string value)
+        {
+            Document = new Document(value);
+        }
     }
 }

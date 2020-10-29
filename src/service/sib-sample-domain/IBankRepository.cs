@@ -3,10 +3,9 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public interface IUserRepository
+    public interface IBankRepository
     {
-        Task NewUser(Bank bank);
-        Task<Bank> GetUserById(BankId id);
-        Task<IEnumerable<Bank>> GetUsers();
+        Task AddBank(Bank bank);
+        Task<IEnumerable<Bank>> GetAll();
     }
 }

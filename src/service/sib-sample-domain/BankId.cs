@@ -1,4 +1,4 @@
-﻿namespace SibSample.Domain.Users
+﻿namespace SibSample.Domain
 {
     using System;
     using Core.Data;

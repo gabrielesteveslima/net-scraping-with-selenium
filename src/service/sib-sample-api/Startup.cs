@@ -51,13 +51,13 @@ namespace SibSample.API
                     };
                     opt.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
-            
+
             services
                 .AddVersioningSystem()
                 .AddSwaggerDocumentation()
                 .AddProblemDetailsMiddleware()
                 .AddHealthChecks();
-            
+
             services.AddCors(options =>
             {
                 options.AddPolicy("EnableCORS", builder =>

@@ -4,32 +4,32 @@ namespace SibSample.Application.Banks
     using Domain.Core.Domain;
     using Domain.Documents;
 
-    public class UserBuilder : Builder<Bank>
+    public class BankBuilder : Builder<Bank>
     {
         public string Name { get; private set; }
         public Document Document { get; private set; }
         public string Code { get; private set; }
         public string ISPB { get; private set; }
 
-        public UserBuilder WithName(string name)
+        public BankBuilder WithName(string name)
         {
             Name = name;
             return this;
         }
 
-        public UserBuilder WithDocument(string document)
+        public BankBuilder WithDocument(string document)
         {
             Document = new Document(document);
             return this;
         }
 
-        public UserBuilder WithCode(string code)
+        public BankBuilder WithCode(string code)
         {
             Code = code;
             return this;
         }
 
-        public UserBuilder WithIspb(string ispb)
+        public BankBuilder WithIspb(string ispb)
         {
             ISPB = ispb;
             return this;
@@ -38,7 +38,7 @@ namespace SibSample.Application.Banks
 
         public override Bank Build()
         {
-            return new Bank(Code, Name, ISPB, Document);
+            return new Bank(Code, Name, ISPB, Document.Value);
         }
     }
 }

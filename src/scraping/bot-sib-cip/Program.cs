@@ -13,12 +13,12 @@ namespace CipScrapingBot
     using Selenium.Utils;
     using SibSample.SeedWorks.Logs;
 
-    class Program
+    internal class Program
     {
         private static IContainer Container { get; set; }
         private static IConfiguration Configuration { get; set; }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -43,7 +43,8 @@ namespace CipScrapingBot
             builder.Register(x =>
             {
                 var seleniumConfig = x.Resolve<SeleniumConfig>();
-                return WebDriveFactory.CreateWebDrive(seleniumConfig.Browser, seleniumConfig.DrivePath, seleniumConfig.Headless);
+                return WebDriveFactory.CreateWebDrive(seleniumConfig.Browser, seleniumConfig.DrivePath,
+                    seleniumConfig.Headless);
             }).As<IWebDriver>();
         }
     }
