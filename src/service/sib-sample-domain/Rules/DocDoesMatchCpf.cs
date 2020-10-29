@@ -12,7 +12,7 @@
             _cpf = cpf;
         }
 
-        public string Message => "User document does match with CPF";
+        public string Message => "Document does match with CPF";
 
         public bool IsBroken()
         {

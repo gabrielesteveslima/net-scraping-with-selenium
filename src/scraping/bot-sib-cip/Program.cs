@@ -11,6 +11,7 @@ namespace CipScrapingBot
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
     using Selenium.Utils;
+    using SibSample.SeedWorks.Logs;
 
     class Program
     {
@@ -33,6 +34,8 @@ namespace CipScrapingBot
 
         private static void RegisterDependencies(ContainerBuilder builder)
         {
+            //using log module, best way create nuget for this
+            builder.RegisterModule(new LogModule());
             builder.RegisterType<PageObject>().As<IPageObject>();
 
             builder.Register(x => Configuration.GetSection("selenium").Get<SeleniumConfig>()).As<SeleniumConfig>();

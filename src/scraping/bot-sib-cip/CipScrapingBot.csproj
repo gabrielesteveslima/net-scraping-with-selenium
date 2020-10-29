@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\seed-works\SibSample.SeedWorks.csproj" />
       <ProjectReference Include="..\selenium-utils\Selenium.Utils.csproj" />
     </ItemGroup>
 

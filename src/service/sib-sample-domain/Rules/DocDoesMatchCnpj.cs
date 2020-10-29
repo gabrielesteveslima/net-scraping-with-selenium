@@ -13,7 +13,7 @@
             _cnpj = cnpj;
         }
 
-        public string Message => "User document does match with CNPJ";
+        public string Message => "Document does match with CNPJ";
 
         public bool IsBroken()
         {

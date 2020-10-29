@@ -2,9 +2,9 @@
 {
     using System;
     using Application.Configuration.Validation;
-    using Infrastructure.Logs;
     using Infrastructure.Processing;
     using Microsoft.AspNetCore.Mvc.Filters;
+    using SeedWorks.Logs;
 
     /// <summary>
     ///     Filters any exception from the application

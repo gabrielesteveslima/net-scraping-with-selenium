@@ -5,12 +5,12 @@
     using Autofac.Extras.CommonServiceLocator;
     using CommonServiceLocator;
     using Domain;
-    using Logs;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Processing;
     using System;
     using Database;
+    using SeedWorks.Logs;
 
     public static class ApplicationStartup
     {

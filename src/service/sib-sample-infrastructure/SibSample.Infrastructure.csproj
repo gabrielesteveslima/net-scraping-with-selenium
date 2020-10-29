@@ -34,6 +34,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\seed-works\SibSample.SeedWorks.csproj" />
       <ProjectReference Include="..\sib-sample-application\SibSample.Application.csproj" />
       <ProjectReference Include="..\sib-sample-domain\SibSample.Domain.csproj" />
     </ItemGroup>
