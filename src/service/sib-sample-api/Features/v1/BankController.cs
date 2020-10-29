@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using Application.Banks;
+    using Application.Banks.BulkInsert;
     using Application.Banks.GetUsers;
     using Application.Banks.RegisterUser;
 
@@ -33,7 +34,7 @@
         [HttpPost("import-data")]
         public async Task<IActionResult> ImportData(ICollection<BankContract> request)
         {
-            return Accepted();
+            return Accepted(await _mediator.Send(new BulkInsertCommand(request)));
         }
 
         [HttpGet]

@@ -31,5 +31,10 @@
         {
             return await _applicationContext.Banks.ToListAsync();
         }
+
+        public Task BulkInsert(List<Bank> banks)
+        {
+            return null;
+        }
     }
 }

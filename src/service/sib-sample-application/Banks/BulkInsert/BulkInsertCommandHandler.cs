@@ -23,14 +23,14 @@ namespace SibSample.Application.Banks.BulkInsert
             {
                 var contract = request.Banks;
 
-                // await _bankRepository.BulkInsert(contract.Select(x =>
-                //         new BankBuilder()
-                //             .WithCode(x.Code)
-                //             .WithIspb(x.ISPB)
-                //             .WithName(x.Name)
-                //             .WithDocument(x.Document)
-                //             .Build())
-                //     .ToList());
+                await _bankRepository.BulkInsert(contract.Select(x =>
+                        new BankBuilder()
+                            .WithCode(x.Code)
+                            .WithIspb(x.ISPB)
+                            .WithName(x.Name)
+                            .WithDocument(x.Document)
+                            .Build())
+                    .ToList());
                 
                 return default;
             }
