@@ -1,4 +1,4 @@
-﻿namespace SibSample.Application.Banks.RegisterUser
+﻿namespace SibSample.Application.Banks.AddBank
 {
     using System;
     using System.Threading;

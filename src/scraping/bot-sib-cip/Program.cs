@@ -8,6 +8,7 @@ namespace CipScrapingBot
     using System.Threading.Tasks;
     using Autofac;
     using Configuration;
+    using Configuration.Resilience;
     using Flurl;
     using Flurl.Http;
     using Flurl.Http.Configuration;
@@ -18,7 +19,6 @@ namespace CipScrapingBot
     using OpenQA.Selenium.Chrome;
     using Polly;
     using Polly.Retry;
-    using Resilience;
     using Selenium.Utils;
     using SendData;
     using SibSample.SeedWorks.Logs;

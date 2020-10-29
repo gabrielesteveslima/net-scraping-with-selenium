@@ -1,5 +1,6 @@
 namespace SibSample.Infrastructure.Database
 {
+    using System;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Design;
     using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -12,8 +13,10 @@ namespace SibSample.Infrastructure.Database
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             dbContextOptionsBuilder.UseNpgsql(
                 "User ID=postgres;Password=postgres;Host=localhost;Port=5432");
+
             dbContextOptionsBuilder
-                .ReplaceService<IValueConverterSelector, StronglyTypedIdValueConverterSelector>();
+                .ReplaceService<IValueConverterSelector, StronglyTypedIdValueConverterSelector>()
+                .EnableDetailedErrors();
 
             return new ApplicationContext(dbContextOptionsBuilder.Options);
         }

@@ -1,4 +1,4 @@
-﻿namespace SibSample.Infrastructure.Database
+﻿namespace SibSample.Infrastructure
 {
     using Microsoft.EntityFrameworkCore;
     using SibSample.Domain;

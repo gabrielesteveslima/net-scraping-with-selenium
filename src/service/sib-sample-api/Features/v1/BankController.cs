@@ -6,9 +6,9 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using Application.Banks;
+    using Application.Banks.AddBank;
     using Application.Banks.BulkInsert;
-    using Application.Banks.GetUsers;
-    using Application.Banks.RegisterUser;
+    using Application.Banks.GetAllBanks;
 
     [ApiController]
     [ApiVersion("1")]
@@ -40,7 +40,7 @@
         [HttpGet]
         public async Task<IActionResult> GetAllBanks()
         {
-            return Ok(await _mediator.Send(new GetUsersQuery()));
+            return Ok(await _mediator.Send(new GetBankQuery()));
         }
     }
 }
