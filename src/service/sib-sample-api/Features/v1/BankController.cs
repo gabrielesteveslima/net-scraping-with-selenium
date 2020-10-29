@@ -1,5 +1,6 @@
 ﻿namespace SibSample.API.Features.v1
 {
+    using System.Collections.Generic;
     using Configuration.ProblemDetails.Helpers;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,12 @@
         {
             return Created("",
                 await _mediator.Send(new AddBankCommand(request)));
+        }
+        
+        [HttpPost("import-data")]
+        public async Task<IActionResult> ImportData(ICollection<BankContract> request)
+        {
+            return Accepted();
         }
 
         [HttpGet]

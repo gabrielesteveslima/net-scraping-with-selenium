@@ -3,25 +3,35 @@ namespace CipScrapingBot
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Http;
+    using System.Threading.Tasks;
     using Configuration;
+    using Flurl;
+    using Flurl.Http;
+    using Flurl.Http.Configuration;
+    using Newtonsoft.Json;
     using OpenQA.Selenium;
+    using Polly;
+    using Polly.Retry;
     using Selenium.Utils;
     using SibSample.SeedWorks.Logs;
 
     public class PageObject : IPageObject
     {
         private readonly SeleniumConfig _seleniumConfig;
+        private readonly SibApiConfig _sibApiConfig;
         private readonly IWebDriver _driver;
         private readonly ILogging _logging;
 
-        public PageObject(SeleniumConfig seleniumConfig, IWebDriver driver, ILogging logging)
+        public PageObject(SeleniumConfig seleniumConfig, IWebDriver driver, ILogging logging, SibApiConfig sibApiConfig)
         {
             _seleniumConfig = seleniumConfig;
             _driver = driver;
             _logging = logging;
+            _sibApiConfig = sibApiConfig;
         }
 
-        public IEnumerable<Bank> RunWebScraping()
+        public async Task<List<Bank>> RunWebScraping()
         {
             try
             {
@@ -38,8 +48,7 @@ namespace CipScrapingBot
                         Name = bankData[1].Text,
                         Code = bankData[2].Text,
                         Document = bankData[3].Text,
-                        ISPB = bankData[4].Text,
-                        Product = bankData[5].Text
+                        ISPB = bankData[4].Text
                     })
                     .ToList();
             }
@@ -58,10 +67,5 @@ namespace CipScrapingBot
                 _driver.Close();
             }
         }
-    }
-
-    public interface IPageObject
-    {
-        IEnumerable<Bank> RunWebScraping();
     }
 }
