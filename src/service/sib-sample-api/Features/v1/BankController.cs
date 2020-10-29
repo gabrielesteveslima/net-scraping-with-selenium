@@ -6,6 +6,7 @@
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using Application.Banks;
     using Application.Users.GetUsers;
 
     [ApiController]
@@ -23,12 +24,12 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] UserContract request)
+        public async Task<IActionResult> AddUser([FromBody] BankContract request)
         {
             return Created("",
-                await _mediator.Send(new RegisterUserCommand(request)));
+                await _mediator.Send(new AddBankCommand(request)));
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {

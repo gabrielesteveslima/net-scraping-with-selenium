@@ -3,12 +3,11 @@
     using Configuration;
     using System.Collections.Generic;
     using Domain;
-    using Domain.Users;
 
-    public class UserContract : Contract<User>
+    public class UserContract : Contract<Bank>
     {
+        public string Code { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
 
         public List<DocumentContract> Documents { get; set; }
     }

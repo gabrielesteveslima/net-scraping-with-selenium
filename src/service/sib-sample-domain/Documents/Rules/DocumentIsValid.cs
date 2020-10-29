@@ -1,14 +1,14 @@
-﻿namespace SibSample.Domain.Rules
+﻿namespace SibSample.Domain.Documents.Rules
 {
     using Core.Domain;
     using static System.Int32;
 
 
-    public class DocDoesMatchCnpj : IBusinessRule
+    public class DocumentIsValid : IBusinessRule
     {
         private readonly string _cnpj;
 
-        public DocDoesMatchCnpj(string cnpj)
+        public DocumentIsValid(string cnpj)
         {
             _cnpj = cnpj;
         }

@@ -3,9 +3,9 @@
     using System;
     using Core.Data;
 
-    public class UserId : TypedIdValueBase
+    public class BankId : TypedIdValueBase
     {
-        public UserId(Guid value) : base(value)
+        public BankId(Guid value) : base(value)
         {
         }
     }
