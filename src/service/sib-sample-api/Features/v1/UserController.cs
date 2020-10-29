@@ -6,6 +6,7 @@
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using Application.Users.GetUsers;
 
     [ApiController]
     [ApiVersion("1")]
@@ -26,6 +27,12 @@
         {
             return Created("",
                 await _mediator.Send(new RegisterUserCommand(request)));
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetUsers()
+        {
+            return Ok(await _mediator.Send(new GetUsersQuery()));
         }
     }
 }

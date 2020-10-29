@@ -16,6 +16,7 @@ namespace SibSample.API
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
     using System;
+    using Microsoft.AspNetCore.Cors.Infrastructure;
 
     public class Startup
     {
@@ -50,12 +51,20 @@ namespace SibSample.API
                     };
                     opt.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
-
+            
             services
                 .AddVersioningSystem()
                 .AddSwaggerDocumentation()
                 .AddProblemDetailsMiddleware()
                 .AddHealthChecks();
+            
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+                });
+            });
 
             services.Configure<ProjectConfig>(Configuration.GetSection("ProjectConfig"));
 
@@ -82,6 +91,7 @@ namespace SibSample.API
                     });
             });
 
+            app.UseCors("EnableCORS");
             app.UseSwaggerDocumentation();
         }
     }

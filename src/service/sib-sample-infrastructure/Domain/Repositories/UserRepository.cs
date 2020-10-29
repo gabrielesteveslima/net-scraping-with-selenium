@@ -1,5 +1,7 @@
 ﻿namespace SibSample.Infrastructure.Domain.Repositories
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Database;
     using Microsoft.EntityFrameworkCore;
     using System.Threading.Tasks;
@@ -23,6 +25,11 @@
         {
             return await _applicationContext.Users.FirstOrDefaultAsync(x =>
                 x.Id == id);
+        }
+
+        public async Task<IEnumerable<User>> GetUsers()
+        {
+            return await _applicationContext.Users.ToListAsync();
         }
     }
 }
