@@ -7,6 +7,6 @@
     {
         Task AddBank(Bank bank);
         Task<IEnumerable<Bank>> GetAll();
-        Task AddRangeAsync(List<Bank> banks);
+        Task AddRangeAsync(IEnumerable<Bank> banks);
     }
 }

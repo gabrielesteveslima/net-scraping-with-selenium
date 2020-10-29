@@ -1,8 +1,6 @@
 ﻿namespace SibSample.Infrastructure.Domain.Repositories
 {
     using System.Collections.Generic;
-    using System.Linq;
-    using Database;
     using Microsoft.EntityFrameworkCore;
     using System.Threading.Tasks;
     using SibSample.Domain;
@@ -21,18 +19,12 @@
             await _applicationContext.Banks.AddAsync(bank);
         }
 
-        public async Task<Bank> GetUserById(BankId id)
-        {
-            return await _applicationContext.Banks.FirstOrDefaultAsync(x =>
-                x.Id == id);
-        }
-
         public async Task<IEnumerable<Bank>> GetAll()
         {
             return await _applicationContext.Banks.ToListAsync();
         }
 
-        public async Task AddRangeAsync(List<Bank> banks)
+        public async Task AddRangeAsync(IEnumerable<Bank> banks)
         {
             await _applicationContext.Banks.AddRangeAsync(banks);
         }
