@@ -5,33 +5,36 @@ namespace SibSample.Application.Banks.BulkInsert
     using System.Threading;
     using System.Threading.Tasks;
     using Domain;
+    using Domain.Core.Data;
     using MediatR;
     using SeedWorks.Logs;
 
     public class BulkInsertCommandHandler : ICommandHandler<BulkInsertCommand>
     {
         private readonly IBankRepository _bankRepository;
+        private readonly IUnitOfWork _uow;
 
-        public BulkInsertCommandHandler(IBankRepository bankRepository)
+        public BulkInsertCommandHandler(IBankRepository bankRepository, IUnitOfWork uow)
         {
             _bankRepository = bankRepository;
+            _uow = uow;
         }
 
         public async Task<Unit> Handle(BulkInsertCommand request, CancellationToken cancellationToken)
         {
             try
             {
-                var contract = request.Banks;
+                var banks = request.Banks.Select(x => new BankBuilder()
+                        .WithName(x.Name)
+                        .WithCode(x.Code)
+                        .WithIspb(x.ISPB)
+                        .WithDocument(x.Document)
+                        .Build())
+                    .ToList();
 
-                await _bankRepository.BulkInsert(contract.Select(x =>
-                        new BankBuilder()
-                            .WithCode(x.Code)
-                            .WithIspb(x.ISPB)
-                            .WithName(x.Name)
-                            .WithDocument(x.Document)
-                            .Build())
-                    .ToList());
-                
+                await _bankRepository.AddRangeAsync(banks);
+                await _uow.CommitAsync(cancellationToken);
+
                 return default;
             }
             catch (Exception e)

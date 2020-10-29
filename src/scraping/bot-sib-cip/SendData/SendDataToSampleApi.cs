@@ -22,14 +22,12 @@ namespace CipScrapingBot.SendData
         {
             var serialize = JsonConvert.SerializeObject(banks,
                 new JsonApiSerializerSettings());
-            
+
             await _sibApiConfig.ImportDataPath
                 .AppendPathSegment("import-data")
                 .ConfigureRequest(setup =>
                 {
-                    setup.JsonSerializer = new NewtonsoftJsonSerializer(new JsonApiSerializerSettings()
-                    {
-                    });
+                    setup.JsonSerializer = new NewtonsoftJsonSerializer(new JsonApiSerializerSettings() { });
                 })
                 .PostJsonAsync(banks);
         }

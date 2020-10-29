@@ -8,8 +8,8 @@ namespace SibSample.Infrastructure.Database.Design.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Banks",
-                columns: table => new
+                "Banks",
+                table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
@@ -23,15 +23,15 @@ namespace SibSample.Infrastructure.Database.Design.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Banks_Document",
-                table: "Banks",
-                column: "Document");
+                "IX_Banks_Document",
+                "Banks",
+                "Document");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Banks");
+                "Banks");
         }
     }
 }

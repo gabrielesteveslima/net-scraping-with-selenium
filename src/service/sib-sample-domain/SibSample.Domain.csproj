@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\seed-works\SibSample.SeedWorks.csproj" />
       <ProjectReference Include="..\sib-sample-domain-core\SibSample.Domain.Core.csproj" />
     </ItemGroup>
 

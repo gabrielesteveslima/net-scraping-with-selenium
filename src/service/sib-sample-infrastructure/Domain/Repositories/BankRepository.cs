@@ -32,9 +32,9 @@
             return await _applicationContext.Banks.ToListAsync();
         }
 
-        public Task BulkInsert(List<Bank> banks)
+        public async Task AddRangeAsync(List<Bank> banks)
         {
-            return null;
+            await _applicationContext.Banks.AddRangeAsync(banks);
         }
     }
 }

@@ -30,7 +30,7 @@
             return Created("",
                 await _mediator.Send(new AddBankCommand(request)));
         }
-        
+
         [HttpPost("import-data")]
         public async Task<IActionResult> ImportData(ICollection<BankContract> request)
         {

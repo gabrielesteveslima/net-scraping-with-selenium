@@ -45,10 +45,10 @@ namespace CipScrapingBot
                 return rowsPage.Select(row => row.FindElements(By.TagName("td")))
                     .Select(bankData => new Bank
                     {
-                        Name = bankData[1].Text,
-                        Code = bankData[2].Text,
-                        Document = bankData[3].Text,
-                        ISPB = bankData[4].Text
+                        Name = bankData[1].Text.Cleaned(),
+                        Code = bankData[2].Text.Cleaned(),
+                        Document = bankData[3].Text.Cleaned(),
+                        ISPB = bankData[4].Text.Cleaned()
                     })
                     .ToList();
             }
